@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<style>
+		body {
+			margin: 0;
+		}
+		#map {
+			width: 100vw;
+			height: 100vh;
+		}
+	</style>
+	<title>Document</title>
+</head>
+<body>
+	<div id="map"></div>
+	<script src="geoxml3-master/kmz/geoxml3.js"></script>
+	<script>
+		var init = () => {
+			var mapDiv = document.getElementById("map")
+
+			var map = new google.maps.Map((mapDiv), {
+				center: {lat: -34, lng: 150},
+				zoom: 4
+			})
+
+			var parser = new geoXML3.parser({map: map})
+			parser.parse("https://raw.githubusercontent.com/Alucherdi/kmlAxtel/master/doc.kml")
+		}
+	</script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSLUncWEZSWRNkdqpJHMewtzhEv4W2848&callback=init"></script>
+</body>
+</html>
